@@ -1,0 +1,50 @@
+﻿@using cay_verersen.Models
+@model List<Slider>
+@{
+    ViewData["Title"] = "Sliders";
+}
+
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Basic Table</h4>
+                    <p class="card-description">
+                        Add class <code>.table</code>
+                    </p>
+                    <a class="btn btn-primary" asp-action="Create">Create</a>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var slider in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="~/assets/imgs/@slider.Image" />
+                                        </td>
+                                        <td>@slider.Title</td>
+                                        <td>@slider.Description</td>
+                                        <td>
+                                            <a class="btn btn-info" asp-action="Detail" asp-route-id="@slider.Id">Detail</a>
+                                            <a class="btn btn-warning" asp-action="Update" asp-route-id="@slider.Id">Update</a>
+                                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@slider.Id">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
